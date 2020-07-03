@@ -1,0 +1,19 @@
+<div class="container">
+    <section class="container-form">
+        <h1 style="color: white; margin: auto; text-align: center;">Explore the pokedex</h1>
+        <form  class="form-register" [formGroup]="login" (ngSubmit)="onSubmit()">
+            <mat-form-field class="form-field" color="accent" hintLabel="Enter your email">
+                <input required type="email" matInput placeholder="Email" formControlName="email">
+                <mat-error *ngIf="this.login.controls.email.invalid">{{getErrorMessageEmail()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field required class="form-field"  color="accent" hintLabel="Enter your password">
+                <input required matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="this.login.controls.password.invalid">Password is required</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="accent" [disabled]="login.invalid" style="margin-top: 10px;">Submit</button>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Pokedex</h1>
+    <form  class="form-search" [formGroup]="searchForm" (ngSubmit)="search()">
+            <mat-form-field class="form-field" color="accent" hintLabel="Search for name">
+                <input type="text" matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field required class="form-field"  color="accent" hintLabel="Search for type">
+                <input matInput placeholder="Type" type="text" formControlName="type">
+            </mat-form-field>
+            <button mat-raised-button color="accent">Search</button> 
+    </form>
+    <div class="button-area">
+        <button mat-icon-button title="Previous page" [disabled]="previosPage" (click)="goPreviousPage()">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button mat-icon-button title="Next page" type="button" [disabled]="nextPage" (click)="goNextPage()">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+    <div class="container-cards"> 
+        <app-card  *ngFor="let item of litsPagePokemon" [pokemonUrl]="item.url" [pokemonStar]="''" (click)="goPokemonPage(item.name)"></app-card>
+    </div>
+</div>

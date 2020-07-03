@@ -1,0 +1,10 @@
+<mat-toolbar color="basic" class="app-header">
+    <div><a routerLink="pokedex">Pokemon Word</a></div>
+    <span class="nav-tool-items">
+      <a *ngIf="isLogin()" mat-button routerLink="pokedex" routerLinkActive="active">Pokedex</a>
+      <a *ngIf="isLogin()" mat-button routerLink="signup" routerLinkActive="active">My account</a>
+      <a *ngIf="isLogin()" mat-button (click)="logout()">Logout</a>
+      <a *ngIf="!isLogin()" mat-button routerLink="login" routerLinkActive="active">Log in</a>
+      <a *ngIf="!isLogin()" mat-button  routerLink="signup" routerLinkActive="active">Sign up</a>
+    </span>
+  </mat-toolbar>

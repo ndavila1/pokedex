@@ -1,0 +1,31 @@
+<div class="container">    
+<section class="container-form">
+    <h1 style="color: white; margin: auto; text-align: center;">{{title}}</h1>
+    <form  class="form-register" [formGroup]="user" (ngSubmit)="onSubmit()">
+        <mat-form-field color="accent" class="form-field" >
+            <input required type="text" matInput placeholder="Enter your name" formControlName="name">
+            <mat-error *ngIf="this.user.controls.name.invalid">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent" class="form-field" >
+            <input required type="email" matInput placeholder="Enter your email" formControlName="email">
+            <mat-error *ngIf="this.user.controls.email.invalid">{{getErrorMessageEmail()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent" required class="form-field">
+            <input required matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="this.user.controls.password.invalid">{{getErrorMessagePassword()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent" class="form-field"  *ngIf="!editMode || show">
+            <input required matInput placeholder="Enter your password again" type="password" formControlName="passwordRepeat">
+            <mat-error>Password is required</mat-error>
+        </mat-form-field>
+        <mat-error style="text-align: center;" *ngIf="checkSame()" class="form-field">Las contraseñas no coinciden</mat-error>
+        <div class="button-area">
+            <button mat-raised-button color="primary" [disabled]="user.invalid || !show" style="margin-top: 10px;" color="accent">Submit</button>
+            <button mat-raised-button color="primary"  style="margin-top: 10px;" type="button" (click)="changeEditMode()" color="accent" *ngIf="editMode">Edit mode</button>
+        </div>
+    </form>
+</section>
+</div>

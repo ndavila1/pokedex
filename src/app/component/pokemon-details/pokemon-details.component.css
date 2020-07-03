@@ -1,0 +1,24 @@
+.container-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-gap: 1.5rem;
+  justify-content: center;
+  align-items: center; 
+}
+h1 {
+  text-align: center;
+  color: #e4c439;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.move-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+mat-list-item.move.mat-list-item.mat-list-item-avatar.mat-list-item-with-avatar.ng-star-inserted {
+  width: 50%;
+}

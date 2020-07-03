@@ -1,6 +1,9 @@
-
-<h1>Information</h1>
+<h1>Evolution chain</h1>
+<div class="container-cards" *ngIf="load"> 
+<app-card  *ngFor="let item of evoChain" [pokemonUrl]="item.url" [pokemonStar]="pokemon.name" (click)="goPokemonPage(item.name)"></app-card>
+</div>
 <mat-list>
+    <h1>Information</h1>
     <h2 mat-subheader>Information</h2>
     <mat-list-item>
       <mat-icon mat-list-icon>self_improvement</mat-icon>
@@ -19,11 +22,6 @@
         <h4 mat-line>{{pokemon.height}} decimetres</h4>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <h1>Evolution chain</h1>
-    <div class="container-cards" *ngIf="load"> 
-    <app-card  *ngFor="let item of evoChain" [pokemonUrl]="item.url" [pokemonStar]="pokemon.name" (click)="goPokemonPage(item.name)"></app-card>
-    </div>
-    <mat-divider style="margin-top: 20px;"></mat-divider>
     <h1>Moves</h1>
     <div class="move-container">
     <mat-list-item class="move" *ngFor="let item of pokemon.moves">
